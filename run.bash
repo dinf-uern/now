@@ -125,6 +125,7 @@ function installed_version {
 
 function public_ip {
     local ip=$(curl -s -L -m2 http://169.254.169.254/latest/meta-data/public-ipv4 || true)
+	ip="192.168.24.5"
     if [[ $ip == "" ]]; then
         ip=$(/sbin/ifconfig | grep -A1 eth | grep "inet addr" | tail -n1 | sed "s/[^0-9]*\([0-9.]*\).*/\1/")
     fi
